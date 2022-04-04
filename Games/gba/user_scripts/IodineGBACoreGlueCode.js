@@ -175,7 +175,6 @@ function registerGUIEvents() {
     addEvent("keyup", document, keyUpPreprocess);
     addEvent("unload", window, ExportSave);
     Iodine.attachSpeedHandler(function (speed) {
-        document.title = games[location.hash.substr(1)] + " - " + speed;
     });
 }
 function lowerVolume() {
@@ -200,7 +199,7 @@ function clearTempString() {
 }
 //Some wrappers and extensions for non-DOM3 browsers:
 function addEvent(sEvent, oElement, fListener) {
-    try {    
+    try {
         oElement.addEventListener(sEvent, fListener, false);
     }
     catch (error) {
@@ -208,7 +207,7 @@ function addEvent(sEvent, oElement, fListener) {
     }
 }
 function removeEvent(sEvent, oElement, fListener) {
-    try {    
+    try {
         oElement.removeEventListener(sEvent, fListener, false);
     }
     catch (error) {
