@@ -1,4 +1,4 @@
-ul {
+nav ul {
   list-style-type: none;
   margin: 0;
   padding: 0;
@@ -8,11 +8,11 @@ ul {
   width: 100%
 }
 
-li {
+nav li {
   float: left;
 }
 
-li a {
+nav li a {
   font-family: sans-serif;
   display: block;
   color: white;
@@ -21,7 +21,7 @@ li a {
   text-decoration: none;
 }
 
-li a:hover {
+nav li a:hover {
   background-color: #111;
 }
 
@@ -30,15 +30,15 @@ body {
   margin: 0;
 }
 
-#roundbox {
+.roundbox {
   border-radius: 25px;
   background: #333;
-  padding: 20px;
-  width: 200px;
-  height: 150px;
-  text-align: center;
+  padding: 0px;
+  width: 1200px;
+  height: 475px;
   margin-left: auto;
-  margin-right: auto
+  margin-right: auto;
+  bottom: 0;
 }
 
 p {
@@ -48,6 +48,12 @@ p {
 }
 
 h1 {
+  color: white;
+  text-align: center;
+  font-family: sans-serif;
+}
+
+h2 {
   color: white;
   text-align: center;
   font-family: sans-serif;
@@ -67,6 +73,10 @@ a {
   height: 150px;
   text-align: center;
   float: left;
+}
+
+.box:hover {
+  background-color: #111;
 }
 
 #current {
@@ -101,4 +111,18 @@ a {
   text-align: center;
   display:inline-block;
   vertical-align:top;
+}
+
+.roundbox2 {
+  border-radius: 25px;
+  background: #333;
+  padding: 0px;
+  width: 1200px;
+  margin-left: auto;
+  margin-right: auto;
+  bottom: 0;
+}
+
+.roundbox2 a {
+  color: white;
 }
