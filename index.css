@@ -126,3 +126,21 @@ a {
 .roundbox2 a {
   color: white;
 }
+
+ol {
+  text-align: left;
+  color: white;
+}
+
+li {
+  color: white;
+  text-align: left;
+}
+
+}
+.hr-line{
+  width: 1%;
+  margin: auto;
+  text-align: center;
+  object-position: center;
+}
