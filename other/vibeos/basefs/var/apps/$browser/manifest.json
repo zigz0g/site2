@@ -1,0 +1,10 @@
+{
+	"main": "index.js",
+	"name": "Browser",
+	"category": "internet",
+	"description": "browse the web",
+	"version": "0.0.1",
+	"icon": "globe.svg",
+	"places": ["desktop", "menu"],
+	"permissions": []
+}

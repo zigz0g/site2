@@ -1,4 +1,0 @@
-.game-grid {
-    display: grid;
-    @apply border border-t-0 border-l-0 dark:border-gray-700 border-gray-200;
-}

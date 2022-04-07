@@ -1,0 +1,13 @@
+<?xml version='1.0' encoding='utf8'?>
+
+<app>
+	<meta>
+		<title>Chatbox</title>
+		<icon src='https://c.sys32.dev/app/assets/favicon.ico'></icon>
+		<position x='12' y='ui.align.middle'></position>
+		<size width='700px' height='400px'></size>
+	</meta>
+	<content>
+		<webview width='100%' height='100%' src='https://c.sys32.dev/app/'></webview>
+	</content>
+</app>

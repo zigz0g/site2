@@ -1,0 +1,10 @@
+{
+	"main": "../explorer/index.js",
+	"name": "Trash",
+	"category": "accessories",
+	"description": "for navigating the vfs on your system",
+	"version": "0.0.1",
+	"icon": "trash-2.svg",
+	"places": [ "desktop" ],
+	"data": { "folder": "/lost+found/" }
+}

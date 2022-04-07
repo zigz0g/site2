@@ -1,0 +1,10 @@
+{
+	"main": "index.js",
+	"name": "cat viewer",
+	"category": "graphics",
+	"description": "cat",
+	"version": "0.0.1",
+	"icon": "app.webp",
+	"places": ["menu"],
+	"permissions": []
+}

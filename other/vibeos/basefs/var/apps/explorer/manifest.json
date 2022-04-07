@@ -1,0 +1,9 @@
+{
+	"main": "index.js",
+	"name": "Explorer",
+	"category": "accessories",
+	"description": "for navigating the vfs on your system",
+	"version": "0.0.1",
+	"icon": "folder.svg",
+	"places": ["desktop", "menu"]
+}

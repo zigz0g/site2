@@ -1,0 +1,27 @@
+<?xml version='1.0' encoding='utf8'?>
+
+<app>
+	<meta>
+		<title>NewIcons</title>
+		<icon src='/usr/share/new/info.png'></icon>
+		<position x='ui.align.middle' y='ui.align.middle'></position>
+		<size width='240px' height='223px'></size>
+	</meta>
+	<content>
+		
+		<image path='/usr/share/new/ok.png' width='50' height='50' x='20' y='20'></image>             <!-- 1,1 : ctaetcsh -->
+		<image path='/usr/share/new/error.png' width='50' height='50' x='70' y='20'></image>               <!-- 1,2 : Divide -->
+		<image path='/usr/share/new/question.png' width='50' height='50' x='120' y='20'></image> <!-- 2,1 : Unknown -->
+		<image path='/usr/share/new/warn.png' width='50' height='50' x='170' y='20'></image> <!-- 2,2 : Unknown -->
+		<image path='/usr/share/new/sec_ok.png' width='50' height='50' x='20' y='70'></image>             <!-- 1,1 : ctaetcsh -->
+		<image path='/usr/share/new/sec_error.png' width='50' height='50' x='70' y='70'></image>               <!-- 1,2 : Divide -->
+		<image path='/usr/share/new/sec_question.png' width='50' height='50' x='120' y='70'></image> <!-- 2,1 : Unknown -->
+		<image path='/usr/share/new/sec_warn.png' width='50' height='50' x='170' y='70'></image> <!-- 2,2 : Unknown -->
+
+		<image path='/usr/share/new/ok_alt.png' width='50' height='50' x='20' y='120'></image>             <!-- 1,1 : ctaetcsh -->
+		<image path='/usr/share/new/sec.png' width='50' height='50' x='70' y='120'></image>               <!-- 1,2 : Divide -->
+		<image path='/usr/share/new/info.png' width='50' height='50' x='120' y='120'></image> <!-- 2,1 : Unknown -->
+		<image path='/usr/share/new/prohibitory.png' width='50' height='50' x='170' y='120'></image> <!-- 2,2 : Unknown -->
+
+	</content>
+</app>

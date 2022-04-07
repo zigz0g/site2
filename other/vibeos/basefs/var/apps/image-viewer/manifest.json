@@ -1,0 +1,10 @@
+{
+	"main": "index.js",
+	"name": "Image viewer",
+	"category": "graphics",
+	"description": "a",
+	"version": "0.0.1",
+	"icon": "aperture.svg",
+	"places": [ "menu" ],
+	"data": { "file": "/usr/share/wallpaper/default.png" }
+}

@@ -1,0 +1,10 @@
+{
+	"main": "index.js",
+	"name": "webGL Demo",
+	"category": "graphics",
+	"description": "testing stuff",
+	"version": "0.0.1",
+	"icon": "codepen.svg",
+	"places": ["menu"],
+	"permissions": []
+}

@@ -1,0 +1,75 @@
+{
+	"minify": {
+		"enabled": false,
+		"fast": true
+	},
+	"webos": {
+		"ver": "0.0.1"
+	},
+	"docs": [
+		{
+			"label": "ui",
+			"path": ["basefs", "lib", "ui.js"]
+		},
+		{
+			"label": "require",
+			"path": ["basefs", "lib", "node", "require.js"]
+		}
+	],
+	"bundle": [
+		{
+			"path": ["basefs", "boot", "start.js"],
+			"options": {
+				"expose": "webos"
+			}
+		},
+		{
+			"path": ["basefs", "lib", "node", "buffer.js"],
+			"options": {
+				"expose": "buffer"
+			}
+		},
+		{
+			"path": ["basefs", "lib", "node", "mime.js"],
+			"options": {
+				"expose": "mime"
+			}
+		},
+		{
+			"path": ["basefs", "lib", "node", "path.js"],
+			"options": {
+				"expose": "path"
+			}
+		},
+		{
+			"path": ["basefs", "lib", "node", "events.js"],
+			"options": {
+				"expose": "events"
+			}
+		},
+		{
+			"path": ["basefs", "lib", "node", "require.js"],
+			"options": {
+				"expose": "require"
+			}
+		},
+		{
+			"path": ["basefs", "lib", "node", "spawn.js"],
+			"options": {
+				"expose": "spawn"
+			}
+		},
+		{
+			"path": ["basefs", "lib", "lzutf8.js"],
+			"options": {
+				"expose": "lzutf8"
+			}
+		},
+		{
+			"path": ["basefs", "lib", "node", "fs.js"],
+			"options": {
+				"expose": "fs"
+			}
+		}
+	]
+}

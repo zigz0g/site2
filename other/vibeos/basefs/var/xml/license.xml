@@ -1,0 +1,37 @@
+<?xml version='1.0' encoding='utf8'?>
+
+<app>
+    <meta>
+        <title>OSDV: vibeOS License</title>
+        <icon src='/usr/share/mimes/document.png'></icon>
+        <position x='ui.align.middle' y='ui.align.middle'></position>
+        <size width='500px' height='500'></size>
+    </meta>
+    <content>
+        <!--Header-->
+        <image path='/usr/share/logo.png' width='100' height='100'></image>
+        <text color='#000' x='100' y='10' size='30'>vibeOS License</text>
+		<text color='#000' x='100' y='40' size='15' max_width='325'>Introduced: 2020-11-24 | Last Revised: 2021-05-10</text>
+		
+		<scroll_box x='10' y='100' width='490' height='365' inner_height='500'>
+			<text max_width='400' baseline='top' color='#000' size='15'>Attention! This copy of the vibeOS Licensed was included in OSDV as of 2021-05-10 and represents the most up to date version of the vibeOS License from the date it was included.
+
+vibeOS is licensed under the BSD 4-Clause License or "Original" License.
+vibeOS Development Team is the organization which develops and maintains the vibeOS Source Code.
+The following are members of the vibeOS Development team as of the printed "Last Revised" date above.
+  * Divide
+  * Nathan Ritchie (ctaetcsh) nathan@ctaetcsh.gay
+
+Copyright (C) 2021 vibeOS Development Team. All Rights Reserved.
+Redistribution and use in source and binary forms, with or without modification, are permitted provided that the following conditions are met:
+1. Redistributions of source code must retain the above copyright notice, this list of conditions and the following disclaimer.
+2. Redistributions in binary form must reproduce the above copyright notice, this list of conditions and the following disclaimer in the documentation and/or other materials provided with the distribution.
+3. All advertising materials mentioning features or use of this software must display the following acknowledgement: This product includes software developed by the vibeOS Development Team.
+4. Neither the name of the copyright holder nor the names of its contributors may be used to endorse or promote products derived from this software without specific prior written permission.
+
+THIS SOFTWARE IS PROVIDED BY VIBEOS DEVELOPMENT TEAM ''AS IS'' AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL VIBEOS DEVELOPMENT TEAM BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+            </text>
+		</scroll_box>
+		
+	</content>
+</app>
