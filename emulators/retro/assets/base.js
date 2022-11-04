@@ -184,7 +184,7 @@ function updateCoreList() {
 			coreArr = installedCores;
 			break;
 	}
-	
+
 	var aCoreList = "";
 	for (var i = 0; i < coreArr.length; i++) {
 		aCoreList += '<li><a href="?core=' + coreArr[i] + '">' + (coreNames[coreArr[i]] || coreArr[i]) + ' (' + systems[coreArr[i]] + ')</a></li>';
@@ -316,7 +316,7 @@ function openIdb() {
 	request.onupgradeneeded = function(e) {
 		wIdb = e.target.result;
 		var transaction = e.target.transaction;
-		
+
 		switch (e.oldVersion) {
 			case 0:
 				// create the object store
@@ -406,9 +406,9 @@ function adjustActualMenuHeight() {
 	canvasCssWorkaround("top: " + actualMenuHeight + "px; height: calc(100vh - " + actualMenuHeight + "px);");
 	canvasMask.style.top = "" + actualMenuHeight + "px";
 	canvasMask.style.height = "calc(100vh - " + actualMenuHeight + "px)";
-	
+
 	menuBar.style.height = "" + actualMenuHeight + "px";
-	
+
 	adjustCanvasSize();
 }
 
@@ -490,7 +490,7 @@ function uploadFile(accept, callback) {
 
 function uploadFileMulti(accept, callback) {
 	let directoryUpload = confirm("Upload a directory?");
-	
+
 	var input = document.createElement("input");
 	input.type = "file";
 	if (directoryUpload) {
@@ -665,7 +665,7 @@ async function fileTreeToList(items) {
 // rom upload
 function readyRomUploads(exts) {
 	romUploadsReady = true;
-	
+
 	// when a rom file is chosen
 	upload.onclick = function() {
 		if (multiFileCores.includes(core)) {
@@ -682,7 +682,7 @@ function readyRomUploads(exts) {
 			});
 		}
 	}
-	
+
 	// web uploads
 	googleDriveUpload.onclick = function() {
 		uploadWebFile("drive", exts);
@@ -693,7 +693,7 @@ function readyRomUploads(exts) {
 	oneDriveUpload.onclick = function() {
 		uploadWebFile("onedrive", exts);
 	}
-	
+
 	// file drop (we need these to be global so they can be removed later)
 	window.fileDragEnter = function(e) {
 		if (e.dataTransfer.types.includes("Files")) ffd.classList.add("filehover");
@@ -705,25 +705,25 @@ function readyRomUploads(exts) {
 		if (e.dataTransfer.types.includes("Files")) {
 			e.preventDefault();
 			ffd.style.display = "none";
-			
+
 			let fileTree = Array.from(e.dataTransfer.items).map(i => i.webkitGetAsEntry());
 			let files = await fileTreeToList(fileTree);
 			let datas = [];
-			
+
 			for (var i = 0; i < files.length; i++) {
 				var file = await readFileEntry(files[i]);
 				var name = files[i].fullPath.slice(1);
 				var data = await readFile(file);
 				datas.push({path: name, data: data});
 			}
-			
+
 			// extract inside if only 1 directory is dropped
 			if (fileTree.length == 1 && fileTree[0].isDirectory) {
 				for (var i = 0; i < datas.length; i++) {
 					datas[i].path = datas[i].path.split("/").slice(1).join("/");
 				}
 			}
-			
+
 			log("Succesfully read ROM file(s)...");
 			romUploadCallback(datas);
 		}
@@ -739,15 +739,15 @@ function readyLaunchQueue() {
 		launchQueue.setConsumer(async function(params) {
 			log("Launching with ROM file(s)...");
 			ffd.style.display = "none";
-			
+
 			let datas = [];
-			
+
 			for (var i = 0; i < params.files.length; i++) {
 				var file = await params.files[i].getFile();
 				var data = await readFile(file);
 				datas.push({path: params.files[i].name, data: data});
 			}
-			
+
 			log("Succesfully read ROM file(s)...");
 			romUploadCallback(datas);
 		});
@@ -930,7 +930,7 @@ keybindTable.onclick = function(e) {
 		let keyNo = Array.from(keybindTable.children).indexOf(e.target.parentElement);
 		valueElement.classList.remove("conflict");
 		valueElement.textContent = "press a key (escape to unbind)";
-		
+
 		function newKeyHandler(e) {
 			if (e.code == "Escape") {
 				keybindsObj[validKeybinds[keyNo]] = "nul";
@@ -996,7 +996,7 @@ downloadAllScreenshots.onclick = function() {
 function createScreenshotList() {
 	var screenshots = FS.analyzePath("/home/web_user/retroarch/userdata/screenshots/").exists ? FS.readdir("/home/web_user/retroarch/userdata/screenshots/").filter(k => ![".", ".."].includes(k)) : [];
 	screenshotsDiv.innerHTML = "";
-	
+
 	for (var i = 0; i < screenshots.length; i++) {
 		var screenshotData = FS.readFile("/home/web_user/retroarch/userdata/screenshots/" + screenshots[i]);
 		var blobUrl = window.URL.createObjectURL(new Blob([screenshotData], {type: "image/png"}));
@@ -1105,7 +1105,7 @@ function getMasterRom(files) {
 				return;
 			}
 		}
-		
+
 		openManager("romSelector");
 		if (recommendedExts) {
 			recommendedExtensions.textContent = "Recommended file extensions: " + recommendedExts;
@@ -1188,7 +1188,7 @@ statesButton.onclick = function(e) {
 (function() {
 	versionIndicator.textContent = "v" + webretroVersion.toString();
 	checkForUpdates();
-	
+
 	// ?system query
 	if (!queries.core && queries.system) {
 		var detectedCores = allCores.filter(k => systems[k].toLowerCase() == queries.system.toLowerCase());
@@ -1204,7 +1204,7 @@ statesButton.onclick = function(e) {
 			alert("Found the core(s) " + detectedCores.join(", ") + ", but none were marked as installed.");
 		}
 	}
-	
+
 	// ?core query
 	if (queries.core) {
 		try {
@@ -1212,33 +1212,33 @@ statesButton.onclick = function(e) {
 		} catch (e) {
 			console.warn(e);
 		}
-		
+
 		// show menu bar
 		menuBar.style.display = "block";
-		
+
 		if (queries.core.toLowerCase() == "autodetect") {
 			romUploadCallback = autodetectCoreHandler;
 			systemName.textContent = "";
 			readyRomUploads(".zip, " + allFileExts);
-			
+
 			document.addEventListener("DOMContentLoaded", readyLaunchQueue, false);
 		} else {
 			romUploadCallback = initFromFile;
 			core = queries.core;
-			
+
 			setStatus("Getting core");
 			// detect system for ROM upload
 			systemName.textContent = systems[core] || "";
-			
+
 			// add an s to the upload button if using a multifile core
 			if (multiFileCores.includes(core)) upload.value += "s";
-			
+
 			// core github link
 			if (coreGithubLinks[core]) {
 				coreGithub.style.setProperty("display", "inline-block", "important");
 				coreGithub.href = "https://github.com/" + coreGithubLinks[core];
 			}
-			
+
 			// show the pre-start options
 			if (coreOptions[core]) {
 				pso.style.display = "block";
@@ -1248,12 +1248,11 @@ statesButton.onclick = function(e) {
 					console.warn(e);
 				}
 			}
-			
+
 			getCore(core, function() {
 				removeStatus("Getting core");
 				log("Got core: " + core);
-				if (romMode != "querystring") document.title = (coreNames[core] || core) + (appIsPwa ? "" : " | webretro");
-				
+
 				readyRomUploads([".zip" + (exclusiveMultiFileCores.includes(core) ? "" : ", .bin"), (allCores.includes(core) ? getFileExtsForCore(core) : allFileExts)].filter(i => i).join(", "));
 			}, function() {
 				// core loading error
@@ -1261,7 +1260,7 @@ statesButton.onclick = function(e) {
 				showCoreList();
 			});
 		}
-		
+
 		// ?rom query
 		if (queries.rom) {
 			readyRomFetch();
@@ -1282,7 +1281,7 @@ function initFromFile(files) {
 	if (files.length == 1 && files[0].path.split(".").slice(-1)[0].toLowerCase() == "zip") {
 		if (multiFileCores.includes(core)) {
 			log("Zip file detected, unzipping... (multi-file ROM detected... probably)");
-			
+
 			unzipFileMulti(files[0].data, function(dataArr) {
 				readyForInit(dataArr);
 			}, function() {
@@ -1290,7 +1289,7 @@ function initFromFile(files) {
 			});
 		} else {
 			log("Zip file detected, unzipping... (single-file ROM detected)");
-			
+
 			unzipFile(files[0].data, [".bin", getFileExtsForCore(core)].filter(i => i).join(", "), function(name, contents) {
 				readyForInit([{path: name, data: contents}]);
 			}, function() {
@@ -1309,7 +1308,7 @@ function autodetectCoreHandler(files) {
 	if (files.length == 1) {
 		if (files[0].path.split(".").slice(-1)[0].toLowerCase() == "zip") {
 			log("Zip file detected, unzipping...");
-			
+
 			unzipFile(files[0].data, allFileExts, function(name, contents) {
 				autodetectCore(name, contents);
 			}, function() {
@@ -1327,18 +1326,18 @@ function autodetectCoreHandler(files) {
 
 function autodetectCore(name, data) {
 	var nameExt = "." + name.split(".").slice(-1)[0].toLowerCase();
-	
+
 	var detectedSystem = allSystems.find(k => fileExts[k].split(", ").includes(nameExt));
-	
+
 	var detectedCores = allCores.filter(k => systems[k] == detectedSystem);
 	var usableCores = installedCores.filter(k => systems[k] == detectedSystem);
 	var usingCore = usableCores.find(k => preferredCores.includes(k)) || usableCores[0];
-	
+
 	if (usingCore) {
 		core = usingCore;
-		
+
 		setStatus("Getting core");
-		
+
 		// show the pre-start options
 		if (coreOptions[core]) {
 			pso.style.display = "block";
@@ -1348,7 +1347,7 @@ function autodetectCore(name, data) {
 				console.warn(e);
 			}
 		}
-		
+
 		getCore(core, function() {
 			removeStatus("Getting core");
 			log("Got core: " + core);
@@ -1365,27 +1364,26 @@ function autodetectCore(name, data) {
 function readyForInit(files) {
 	// undefine romUploadCallback to make sure initialization only happens once (it shouldn't anyway)
 	romUploadCallback = function() {};
-	
+
 	// set the romName now if using single-file rom
 	if (files.length == 1) {
 		romName = files[0].path.split("/").slice(-1)[0].split(".")[0];
-		document.title = romName + (appIsPwa ? "" : " | webretro");
 	}
-	
+
 	if (queries.romshift) {
 		let shift = parseInt(queries.romshift);
 		for (var i = 0; i < files.length; i++) {
 			files[i].data = avShift(new Uint8Array(files[i].data), shift).buffer;
 		}
 	}
-	
+
 	// remove the file drop listeners
 	if (romUploadsReady) {
 		document.removeEventListener("dragenter", fileDragEnter);
 		document.removeEventListener("dragover", fileDragOver);
 		document.removeEventListener("drop", fileDropped);
 	}
-	
+
 	if (romMode == "querystring" && (queries.hasOwnProperty("forcestartbutton") || !isAudioAllowed())) {
 		// start button (don't delete this section, audio contexts are not allowed to start until a user gesture on the page, in this case, clicking the start button) https://goo.gl/7K7WLu
 		startButton.style.display = "initial";
@@ -1403,24 +1401,24 @@ function prepareBundle() {
 	setStatus("Getting assets");
 	log("Starting bundle fetch");
 	let bundleSTime = performance.now();
-	
+
 	grab(bundleCdnLatest + "bundle/indexedfiles-v2.txt", "text", function(data) {
 		try {
 			var splitData = data.split(",,,\n");
 			fsBundleDirs = JSON.parse(splitData[0]);
 			fsBundleFiles = splitData[1].split("\n");
-			
+
 			// make the paths
 			FS.createPath("/", baseFsBundleDir.substring(1), true, true);
 			for (var i = 0; i < fsBundleDirs.length; i++) {
 				FS.createPath(baseFsBundleDir + fsBundleDirs[i][0], fsBundleDirs[i][1], true, true);
 			}
-			
+
 			loadingBar.style.display = "initial";
 			loadingBar.value = 0;
 			let step = 1 / fsBundleFiles.length;
 			let num = 0;
-			
+
 			// make the files
 			for (let i = 0; i < fsBundleFiles.length; i++) {
 				grab(bundleCdn + "bundle" + fsBundleFiles[i], "arraybuffer", function(data) {
@@ -1459,7 +1457,7 @@ function prepareBios() {
 	if (bioses[core]) {
 		let bios = bioses[core];
 		let num = 0;
-		
+
 		FS.createPath("/", baseFsSystemDir.substring(1) + bios.path, true, true);
 		for (let i = 0; i < bios.files.length; i++) {
 			grab(biosCdn + bios.files[i], "arraybuffer", function(data) {
@@ -1517,9 +1515,9 @@ function saveFilesToArr(files) {
 function saveSRAMHandler(path) {
 	saveObj[path.replace(baseFsSaveDir, "").replace("rom", "ROMNAME")] = FS.readFile(path);
 	setIdbItem("RetroArch_saves_" + romName, saveObjToArr(saveObj));
-	
+
 	new sideAlert("Saved", 3000);
-	
+
 	doNotRename();
 }
 
@@ -1527,7 +1525,7 @@ function saveSRAMHandler(path) {
 function saveStateHandler() {
 	if (FS.analyzePath("/home/web_user/retroarch/userdata/states/rom.state").exists) {
 		setIdbItem("RetroArch_states_" + romName, FS.readFile("/home/web_user/retroarch/userdata/states/rom.state"));
-		
+
 		doNotRename();
 	} else {
 		new sideAlert("There was an error saving state. Please try again.", 5000);
@@ -1548,7 +1546,7 @@ function autosaveSRAM() {
 // writeToFile router
 function writeToFileHandler(path) {
 	// console.log("%c" + path, "color: #8888ff");
-	
+
 	if (path.startsWith(baseFsSaveDir)) {
 		saveSRAMHandler(path);
 	} else if (path.startsWith("/home/web_user/retroarch/userdata/states/")) {
@@ -1559,19 +1557,19 @@ function writeToFileHandler(path) {
 // runs after emulator starts
 function afterStart() {
 	mainCompleted = true;
-	
+
 	adjustCanvasSize();
 	menuBar.classList.add("show");
-	
+
 	// functions for save and state buttons
-	
+
 	// states
-	
+
 	saveState.classList.remove("disabled");
 	saveState.onclick = function() {
 		Module._cmd_save_state();
 	}
-	
+
 	importState.classList.remove("disabled");
 	importState.onclick = function() {
 		if (noStateCores.includes(core)) {
@@ -1584,12 +1582,12 @@ function afterStart() {
 			});
 		}
 	}
-	
+
 	loadState.classList.remove("disabled");
 	loadState.onclick = function() {
 		Module._cmd_load_state();
 	}
-	
+
 	exportState.classList.remove("disabled");
 	exportState.onclick = function() {
 		if (FS.analyzePath("/home/web_user/retroarch/userdata/states/rom.state").exists) {
@@ -1598,25 +1596,25 @@ function afterStart() {
 			alert("No state to export.");
 		}
 	}
-	
+
 	undoSaveState.classList.remove("disabled");
 	undoSaveState.onclick = function() {
 		Module._cmd_undo_save_state();
 	}
-	
+
 	undoLoadState.classList.remove("disabled");
 	undoLoadState.onclick = function() {
 		Module._cmd_undo_load_state();
 	}
-	
+
 	// saves
-	
+
 	saveGame.classList.remove("disabled");
 	saveGame.onclick = function() {
 		new sideAlert("Saving...", 3000);
 		Module._cmd_savefiles();
 	}
-	
+
 	importSave.classList.remove("disabled");
 	importSave.onclick = function() {
 		if (noSaveCores.includes(core)) {
@@ -1656,7 +1654,7 @@ function afterStart() {
 			}
 		}
 	}
-	
+
 	exportSave.classList.remove("disabled");
 	exportSave.onclick = function() {
 		var files = replaceInFiles(saveArrToFiles(saveObjToArr(saveObj)), "ROMNAME", romName);
@@ -1670,14 +1668,14 @@ function afterStart() {
 			});
 		}
 	}
-	
+
 	// start autosave loop
 	autosave.removeAttribute("disabled");
 	autosave.parentElement.parentElement.classList.remove("disabled");
 	window.setTimeout(function() {
 		autosaveSRAM();
 	}, 300000);
-	
+
 	// toggle between sharp and smooth canvas graphics
 	smooth.removeAttribute("disabled");
 	smooth.parentElement.parentElement.classList.remove("disabled");
@@ -1688,7 +1686,7 @@ function afterStart() {
 			canvas.className = "texturePixelated";
 		}
 	}
-	
+
 	// pause and resume
 	pause.classList.remove("disabled");
 	pause.onclick = function() {
@@ -1707,13 +1705,13 @@ function afterStart() {
 	resumeOverlay.onclick = function() {
 		pause.click();
 	}
-	
+
 	// toggle menu
 	menuButton.classList.remove("disabled");
 	menuButton.onclick = function() {
 		Module._cmd_toggle_menu();
 	}
-	
+
 	// reset
 	resetButton.classList.remove("disabled");
 	resetButton.onclick = function() {
@@ -1723,7 +1721,7 @@ function afterStart() {
 	resetButton2.onclick = function() {
 		Module._cmd_reset();
 	}
-	
+
 	// toggle mouse grab
 	mouseGrabButton.classList.remove("disabled");
 	mouseGrabButton.onclick = function(e) {
@@ -1735,7 +1733,7 @@ function afterStart() {
 			e.target.parentElement.style.display = "";
 		}, 20);
 	}
-	
+
 	// toggle game focus
 	gameFocusButton.classList.remove("disabled");
 	gameFocusButton.onclick = function(e) {
@@ -1747,13 +1745,13 @@ function afterStart() {
 			e.target.parentElement.style.display = "";
 		}, 20);
 	}
-	
+
 	// screenshot button
 	takeScreenshot.classList.remove("disabled");
 	takeScreenshot.onclick = function() {
 		Module._cmd_take_screenshot();
 	}
-	
+
 	// ctrl+v inside canvas
 	document.addEventListener("keydown", function(e) {
 		if (e.ctrlKey && e.code == "KeyV") {
@@ -1777,12 +1775,12 @@ function initFromData(data) {
 				e.preventDefault();
 			}, false);
 			adjustCanvasSize();
-			
+
 			// prevent defaults for key presses
 			document.addEventListener("keydown", function(e) {
 				if (pdKeys.includes(e.which)) e.preventDefault();
 			}, false);
-			
+
 			// fix for iframe bug
 			if (window.self != window.top) {
 				canvas.addEventListener("mousedown", function() {
@@ -1796,49 +1794,48 @@ function initFromData(data) {
 					}, false);
 				}
 			}
-			
+
 			// create the rom(s) in the filesystem
 			if (data.length == 1) {
 				// single-rom mode
-				
+
 				realRomExt = data[0].path.split(".").slice(-1)[0] || "bin";
 				FS.createPath("/", "rom", true, true);
 				FS.writeFile("/rom/rom." + realRomExt, new Uint8Array(data[0].data));
 				Module.arguments[0] = "/rom/rom." + realRomExt;
 			} else {
 				// multi-rom mode
-				
+
 				var masterIndex = await getMasterRom(data);
-				
+
 				// now set the romName for multi-file roms
 				romName = data[masterIndex].path.split("/").slice(-1)[0].split(".")[0];
-				document.title = romName + (appIsPwa ? "" : " | webretro");
-				
+
 				realRomExt = data[masterIndex].path.split(".").slice(-1)[0] || "bin";
 				data[masterIndex].path = "rom." + realRomExt;
 				Module.arguments[0] = "/rom/" + data[masterIndex].path;
-				
+
 				// optionally rename any direct dependencies to "rom"
 				if (exclusiveMultiFileCores.includes(core) && confirm('Rename similar files? (Use if you get "Unable to find rom" errors. Otherwise don\'t use.)')) {
 					for (var i = 0; i < data.length; i++) {
 						if (!data[i].path.includes("/")) data[i].path = data[i].path.replace(romName, "rom");
 					}
 				}
-				
+
 				FS.createPath("/", "rom", true, true);
 				var parentDirs = Array.from(new Set(data.map(i => i.path.split("/").slice(0, -1).join("/")))).filter(i => i);
-				
+
 				// create directories
 				for (var i = 0; i < parentDirs.length; i++) {
 					FS.createPath("/rom/", parentDirs[i], true, true);
 				}
-				
+
 				// create files
 				for (var i = 0; i < data.length; i++) {
 					FS.writeFile("/rom/" + data[i].path, new Uint8Array(data[i].data));
 				}
 			}
-			
+
 			// load save
 			var cSave = await getIdbItem("RetroArch_saves_" + romName);
 			if (cSave) {
@@ -1850,7 +1847,7 @@ function initFromData(data) {
 				new sideAlert("Save loaded for " + romName, 5000);
 				log("Save loaded for " + romName);
 			}
-			
+
 			// import state
 			var cState = await getIdbItem("RetroArch_states_" + romName);
 			if (cState) {
@@ -1859,10 +1856,10 @@ function initFromData(data) {
 				new sideAlert("State imported for " + romName + " (press load state)", 5000);
 				log("State imported for " + romName);
 			}
-			
+
 			// config
 			safeWriteFile("/home/web_user/retroarch/userdata/retroarch.cfg", nulKeys + configObjToStr(savedKeybindsObj) + extraConfig);
-			
+
 			// get the core options
 			var coreOptionsString = "";
 			if (coreOptions[core]) {
@@ -1876,7 +1873,7 @@ function initFromData(data) {
 					console.warn(e);
 				}
 			}
-			
+
 			// core-specific config (will be revised in the future)
 			switch (core) {
 				case "a5200":
@@ -1928,7 +1925,7 @@ function initFromData(data) {
 					safeWriteFile(baseFsConfigDir + "Yabause/Yabause.opt", coreOptionsString);
 					break;
 			}
-			
+
 			// system-specific config
 			switch (systems[core]) {
 				case "SNES":
@@ -1939,7 +1936,7 @@ function initFromData(data) {
 					}
 					break;
 			}
-			
+
 			// writeToFile tracking (needs some extra stuff since it frequently fires in groups)
 			FS.trackingDelegate.onWriteToFile = function(path) {
 				if (!path.startsWith("/dev/")) {
@@ -1947,16 +1944,16 @@ function initFromData(data) {
 					writeToFileCooldown[path] = window.setTimeout(function() {
 						delete writeToFileCooldown[path];
 						FSTracking.dispatchEvent(new CustomEvent("writeToFile", {detail: path}));
-						
+
 						// bigger delay = more lenient
 					}, 1000);
 				}
 			}
-			
+
 			FSTracking.addEventListener("writeToFile", function(e) {
 				writeToFileHandler(e.detail);
 			}, false);
-			
+
 			// start
 			log("Calling main...");
 			try {
@@ -1968,10 +1965,10 @@ function initFromData(data) {
 				console.error(e);
 			}
 			log("Main completed...");
-			
+
 			adjustCanvasSize();
 			loadingDiv.style.display = "none";
-			
+
 			window.setTimeout(afterStart, 1000);
 		} else {
 			window.setTimeout(waitForReady, 250);
@@ -1987,10 +1984,10 @@ var Module = {
 	onRuntimeInitialized: function() {
 		wasmReady = true;
 		log("WASM ready");
-		
+
 		// fetch BIOSes
 		prepareBios();
-		
+
 		// fetch asset bundle
 		if (queries.hasOwnProperty("nobundle")) {
 			bundleReady = true;
