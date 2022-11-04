@@ -110,9 +110,9 @@ a {
 #title ul{
   padding: 0px;
   margin: 0px;
-  text-align: center;
+  text-align: right;
   display:inline-block;
-  vertical-align:top;
+  vertical-align:top-right;
 }
 
 .roundbox2 {
