@@ -64,7 +64,15 @@ a {
   color: #001101;
 }
 
-
+p a {
+  color: white;
+  text-align: center;
+  font-family: sans-serif;
+  border:none;
+  outline:none;
+  text-decoration:none;
+  margin-left:-4px;
+}
 
 .box {
   margin: 23px 23px 23px 10px;
